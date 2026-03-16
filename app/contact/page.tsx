@@ -7,7 +7,7 @@ import PageHero from '../components/PageHero';
 
 const infos = [
   { icon: Phone, title: 'Call Us', lines: ['+91 98765 43210'], sub: 'Mon–Sat, 9 AM–7 PM IST' },
-  { icon: Mail, title: 'Email Us', lines: ['hello@wanderlux.in'], sub: 'Reply within 24 hours' },
+  { icon: Mail, title: 'Email Us', lines: ['hello@thetraveldesigner.in'], sub: 'Reply within 24 hours' },
   { icon: MapPin, title: 'Visit Us', lines: ['42 MG Road, Kochi, Kerala 682001'], sub: 'Walk-in Mon–Sat' },
   { icon: Clock, title: 'Office Hours', lines: ['Mon–Fri: 9 AM–7 PM', 'Sat: 10 AM–5 PM'], sub: 'Closed Sun & Holidays' },
 ];
@@ -116,7 +116,7 @@ export default function ContactPage() {
                   <span style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>MG Road, Kochi, Kerala</span>
                 </div>
                 <div style={{ padding: '24px' }}>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 10, fontFamily: 'inherit' }}>WanderLux Head Office</h3>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 10, fontFamily: 'inherit' }}>The Travel Designer Head Office</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.7 }}>42, MG Road, Near Lulu Mall<br />Kochi, Kerala 682001, India</p>
                   <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
                     <a href="tel:+919876543210" className="btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '11px', fontSize: '0.82rem' }}><Phone size={14} /> Call Now</a>

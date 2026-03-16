@@ -51,7 +51,7 @@ export default function Footer() {
                 <MapPin size={20} color="#fff" />
               </div>
               <div style={{ lineHeight: 1.1 }}>
-                <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)' }}>WanderLux</div>
+                <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)' }}>The Travel Designer</div>
                 <div style={{ fontSize: '0.6rem', color: 'var(--primary-light)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Travels & Tours</div>
               </div>
             </Link>
@@ -150,7 +150,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               {[
                 { icon: Phone, text: '+91 98765 43210' },
-                { icon: Mail, text: 'hello@wanderlux.in' },
+                { icon: Mail, text: 'hello@thetraveldesigner.in' },
                 { icon: MapPin, text: '42, MG Road, Kochi, Kerala 682001' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
@@ -197,7 +197,7 @@ export default function Footer() {
           gap: 12,
         }}>
           <p style={{ color: 'var(--text-dim)', fontSize: '0.82rem' }}>
-            © 2025 WanderLux Travels & Tours. All rights reserved.
+            © 2025 The Travel Designer Travels & Tours. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: 20 }}>
             {['Privacy Policy', 'Terms & Conditions', 'Refund Policy'].map(t => (

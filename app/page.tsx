@@ -88,7 +88,7 @@ const testimonials = [
     location: 'Mumbai, Maharashtra',
     tour: 'Kerala Backwaters',
     rating: 5,
-    text: 'Absolutely magical experience! The houseboat stay in Alleppey was a dream come true. WanderLux took care of every single detail – nothing was left to chance.',
+    text: 'Absolutely magical experience! The houseboat stay in Alleppey was a dream come true. The Travel Designer took care of every single detail – nothing was left to chance.',
   },
   {
     name: 'Rahul Mehta',
@@ -102,7 +102,7 @@ const testimonials = [
     location: 'Pune, Maharashtra',
     tour: 'Himachal Honeymoon',
     rating: 5,
-    text: 'Our Himachal honeymoon was absolutely perfect. The resort selections, the personalised touches – WanderLux made us feel truly special throughout.',
+    text: 'Our Himachal honeymoon was absolutely perfect. The resort selections, the personalised touches – The Travel Designer made us feel truly special throughout.',
   },
 ];
 
@@ -319,7 +319,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <AnimatedSection style={{ textAlign: 'center', marginBottom: 52 }}>
-            <span className="section-tag">💎 Why WanderLux</span>
+            <span className="section-tag">💎 Why The Travel Designer</span>
             <h2 className="section-title">Travel With Confidence</h2>
             <p className="section-subtitle" style={{ margin: '0 auto 0' }}>
               We go beyond bookings — we craft journeys that are safe, seamless, and spectacular.
@@ -407,7 +407,7 @@ export default function HomePage() {
             <span className="section-tag">❤️ Traveler Stories</span>
             <h2 className="section-title">What Our Travelers Say</h2>
             <p className="section-subtitle" style={{ margin: '0 auto 0' }}>
-              Real experiences from real adventurers who trusted WanderLux for their journeys.
+              Real experiences from real adventurers who trusted The Travel Designer for their journeys.
             </p>
           </AnimatedSection>
           <div className="grid-3">

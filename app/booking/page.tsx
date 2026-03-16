@@ -116,10 +116,15 @@ export default function BookingPage() {
         <div className="container" style={{ maxWidth: 800 }}>
 
           {/* Step Indicator */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 52, gap: 0 }}>
-            {STEPS.map((label, i) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+          <div style={{ position: 'relative', maxWidth: 500, margin: '0 auto 52px', width: '100%' }}>
+            {/* Track Line */}
+            <div style={{ position: 'absolute', top: 21, left: '16.66%', right: '16.66%', height: 2, background: 'var(--border)', zIndex: 0 }} />
+            {/* Progress Line */}
+            <div style={{ position: 'absolute', top: 21, left: '16.66%', width: `calc(66.66% * ${step / (STEPS.length - 1)})`, height: 2, background: 'var(--primary)', zIndex: 0, transition: 'width 0.4s' }} />
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
+              {STEPS.map((label, i) => (
+                <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
                   <div style={{
                     width: 44, height: 44, borderRadius: '50%',
                     background: i < step ? 'var(--primary)' : i === step ? 'var(--primary)' : 'var(--bg-card)',
@@ -133,15 +138,12 @@ export default function BookingPage() {
                       : <span style={{ fontSize: '0.88rem', fontWeight: 700, color: i === step ? '#fff' : 'var(--text-dim)' }}>{i + 1}</span>
                     }
                   </div>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: i === step ? 'var(--primary-light)' : 'var(--text-dim)', whiteSpace: 'nowrap' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: i === step ? 'var(--primary-light)' : 'var(--text-dim)', textAlign: 'center', lineHeight: 1.2, padding: '0 4px' }}>
                     {label}
                   </span>
                 </div>
-                {i < STEPS.length - 1 && (
-                  <div style={{ width: 80, height: 2, background: i < step ? 'var(--primary)' : 'var(--border)', transition: 'background 0.4s', margin: '0 8px', marginBottom: 28 }} />
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Form Card */}
@@ -329,12 +331,12 @@ export default function BookingPage() {
                       </span>
                     </label>
 
-                    <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', borderTop: '1px solid var(--border)', paddingTop: 24 }}>
+                    <div style={{ display: 'flex', gap: 12, justifyContent: 'center', borderTop: '1px solid var(--border)', paddingTop: 24 }}>
                       <button type="button" onClick={prev} className="btn-outline">
                         <ArrowLeft size={15} /> Back
                       </button>
                       <button type="submit" className="btn-accent" style={{ padding: '13px 32px' }}>
-                        <Send size={15} /> Submit Booking Request
+                        <Send size={15} /> Submit
                       </button>
                     </div>
                   </form>

@@ -54,7 +54,7 @@ export default function Navbar() {
           </div>
           <div style={{ lineHeight: 1.1 }}>
             <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.01em' }}>
-              WanderLux
+              The Travel Designer
             </div>
             <div style={{ fontSize: '0.6rem', color: 'var(--primary-light)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
               Travels & Tours

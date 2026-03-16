@@ -20,9 +20,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "WanderLux Travels – Premium Tour Packages India",
+  title: "The Travel Designer – Premium Tour Packages India",
   description:
-    "Discover India's finest tour packages. WanderLux offers curated travel experiences – pilgrimage tours, adventure trips, honeymoon packages, cultural tours and more.",
+    "Discover India's finest tour packages. The Travel Designer offers curated travel experiences – pilgrimage tours, adventure trips, honeymoon packages, cultural tours and more.",
   keywords: "India tour packages, travel India, holiday packages, Kerala tours, Rajasthan tours, Himachal tours",
 };
 

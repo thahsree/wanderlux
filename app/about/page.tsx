@@ -12,7 +12,7 @@ const teamMembers = [
 ];
 
 const milestones = [
-  { year: '2009', event: 'WanderLux founded in Kochi with a team of 3 travel enthusiasts.' },
+  { year: '2009', event: 'The Travel Designer founded in Kochi with a team of 3 travel enthusiasts.' },
   { year: '2012', event: 'Expanded to 20 destinations across India. First international package launched.' },
   { year: '2016', event: 'Crossed 1,000 happy travelers. Launched digital booking platform.' },
   { year: '2020', event: 'Pioneered virtual travel planning during COVID. Supported stranded travelers.' },
@@ -38,7 +38,7 @@ export default function AboutPage() {
       <PageHero
         tag="Our Story"
         title="We Are"
-        titleHighlight="WanderLux"
+        titleHighlight="The Travel Designer"
         subtitle="Born from a love of travel and a belief that every Indian journey deserves to be legendary."
         breadcrumbs={[{ label: 'About Us' }]}
       />
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 Making India&apos;s Beauty <span className="text-gradient">Accessible to All</span>
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: 18, fontSize: '0.97rem' }}>
-                At WanderLux, we believe that a great journey is more than just visiting places — it&apos;s about experiencing cultures, forming connections, and returning home transformed.
+                At The Travel Designer, we believe that a great journey is more than just visiting places — it&apos;s about experiencing cultures, forming connections, and returning home transformed.
               </p>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: 28, fontSize: '0.97rem' }}>
                 Since 2009, we have been curating personalised travel experiences for thousands of Indians and international travellers — from weekend getaways to month-long odysseys across the subcontinent.
