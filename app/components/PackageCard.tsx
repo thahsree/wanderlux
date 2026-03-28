@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Camera, Clock, MapPin, Star, Users } from 'lucide-react';
+import { ArrowRight, Clock, MapPin, Star, Users } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface PackageCardProps {
@@ -15,6 +16,7 @@ interface PackageCardProps {
   reviews: number;
   category: string;
   highlights: string[];
+  image: string;
   index?: number;
 }
 
@@ -29,6 +31,7 @@ export default function PackageCard({
   reviews,
   category,
   highlights,
+  image,
   index = 0,
 }: PackageCardProps) {
   return (
@@ -55,14 +58,16 @@ export default function PackageCard({
         (e.currentTarget as HTMLElement).style.boxShadow = 'none';
       }}
     >
-      {/* Image Placeholder */}
+      {/* Image */}
       <div style={{ position: 'relative', height: 220, overflow: 'hidden' }}>
-        <div className="img-placeholder" style={{ height: 220 }}>
-          <Camera size={32} color="var(--text-dim)" />
-          <span style={{ fontSize: '0.78rem', textAlign: 'center', padding: '0 16px' }}>
-            {destination} — Add your photo
-          </span>
-        </div>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          style={{ objectFit: 'cover' }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+
         {/* Category badge */}
         <div className="badge badge-primary" style={{
           position: 'absolute', top: 12, left: 12,

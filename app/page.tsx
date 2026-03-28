@@ -2,16 +2,16 @@
 
 import { motion } from 'framer-motion';
 import {
-    ArrowRight,
-    Award,
-    Camera,
-    Headphones,
-    MapPin, Phone,
-    Shield,
-    Star,
-    TrendingUp,
-    Users,
+  ArrowRight,
+  Award,
+  Headphones,
+  MapPin, Phone,
+  Shield,
+  Star,
+  TrendingUp,
+  Users,
 } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import AnimatedSection from './components/AnimatedSection';
 import FAQAccordion from './components/FAQAccordion';
@@ -32,6 +32,7 @@ const packages = [
     reviews: 312,
     category: 'Cultural',
     highlights: ['Taj Mahal Sunrise', 'Red Fort', 'Amber Fort', 'City Palace'],
+    image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGFqJTIwbWFoYWx8ZW58MHx8MHx8fDA%3D',
   },
   {
     title: 'Kerala Backwaters Escape',
@@ -44,6 +45,7 @@ const packages = [
     reviews: 248,
     category: 'Nature',
     highlights: ['Houseboat Stay', 'Tea Estates', 'Backwater Cruise', 'Kathakali Show'],
+    image: 'https://plus.unsplash.com/premium_photo-1661964409364-8f3d4839dcab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8S2VyYWxhJTIwQmFja3dhdGVycyUyMEVzY2FwZXxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     title: 'Himalayan Adventure Trek',
@@ -56,16 +58,17 @@ const packages = [
     reviews: 186,
     category: 'Adventure',
     highlights: ['Rohtang Pass', 'Pangong Lake', 'Monastery Visit', 'Camping'],
+    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
   },
 ];
 
 const destinations = [
-  { name: 'Kerala', packages: 24, tag: 'Backwaters & Hills' },
-  { name: 'Rajasthan', packages: 31, tag: 'Forts & Palaces' },
-  { name: 'Himachal', packages: 18, tag: 'Snow & Treks' },
-  { name: 'Goa', packages: 15, tag: 'Beaches & Nightlife' },
-  { name: 'Uttarakhand', packages: 22, tag: 'Pilgrimage & Rivers' },
-  { name: 'Andaman', packages: 12, tag: 'Coral & Islands' },
+  { name: 'Kerala', packages: 24, tag: 'Backwaters & Hills', image: 'https://plus.unsplash.com/premium_photo-1697729438401-fcb4ff66d9a8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2VyYWxhfGVufDB8fDB8fHww' },
+  { name: 'Rajasthan', packages: 31, tag: 'Forts & Palaces', image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Himachal', packages: 18, tag: 'Snow & Treks', image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Goa', packages: 15, tag: 'Beaches & Nightlife', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Uttarakhand', packages: 22, tag: 'Pilgrimage & Rivers', image: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Andaman', packages: 12, tag: 'Coral & Islands', image: 'https://plus.unsplash.com/premium_photo-1719843013722-c2f4d69db940?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8QW5kYW1hbiUyMElzbGFuZHN8ZW58MHx8MHx8fDA%3D' },
 ];
 
 const features = [
@@ -298,9 +301,14 @@ export default function HomePage() {
                       (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                     }}
                   >
-                    <div className="img-placeholder" style={{ height: 180 }}>
-                      <Camera size={28} color="var(--text-dim)" />
-                      <span style={{ fontSize: '0.75rem' }}>{dest.name} — Add your photo</span>
+                    <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
+                      <Image
+                        src={dest.image}
+                        alt={dest.name}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
                     </div>
                     <div style={{ padding: '18px 20px' }}>
                       <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text)', marginBottom: 4, fontFamily: 'inherit' }}>{dest.name}</h3>
@@ -387,7 +395,7 @@ export default function HomePage() {
             {stats.map((s, i) => (
               <AnimatedSection key={s.label} delay={i * 0.1} direction="up">
                 <div>
-                  <div style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 900, color: '#fff', fontFamily: 'var(--font-playfair)', lineHeight: 1 }}>
+                  <div style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 900, color: '#fff', fontFamily: 'var(--font-montserrat)', lineHeight: 1 }}>
                     {s.value}
                   </div>
                   <div style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', marginTop: 8, letterSpacing: '0.04em' }}>

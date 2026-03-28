@@ -1,22 +1,24 @@
 'use client';
 
-import { ArrowRight, Camera, ChevronLeft, ChevronRight, Clock, User } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Clock, User } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHero from '../components/PageHero';
 
 const blogPosts = [
-  { slug: '1', title: 'Top 10 Hidden Gems in Kerala You Must Visit in 2025', category: 'Destinations', readTime: '6 min', date: 'Jan 15, 2025', author: 'Arjun Nair', excerpt: 'Beyond the famous backwaters and Munnar, Kerala hides extraordinary places that most tourists never discover. We reveal the best-kept secrets.' },
-  { slug: '2', title: 'Complete Guide to the Char Dham Yatra: Planning, Routes & Tips', category: 'Pilgrimage', readTime: '10 min', date: 'Jan 22, 2025', author: 'Priya Menon', excerpt: "Embarking on the Char Dham Yatra is a life-changing spiritual journey. Here's everything you need to know to plan it properly." },
-  { slug: '3', title: 'Best Time to Visit Ladakh: Month-by-Month Breakdown', category: 'Travel Tips', readTime: '7 min', date: 'Feb 1, 2025', author: 'Karan Singh', excerpt: "Ladakh's climate varies dramatically through the year. We break down the best months for different activities — from biking to lake visits." },
-  { slug: '4', title: 'How to Travel India on a Budget Without Missing Out', category: 'Budget Travel', readTime: '8 min', date: 'Feb 8, 2025', author: 'Sneha Patel', excerpt: 'India can be incredibly affordable — if you know the right tricks. From train bookings to dharamshalas, our budget travel guide has it all.' },
-  { slug: '5', title: "Meghalaya's Living Root Bridges: How to Get There", category: 'Adventure', readTime: '5 min', date: 'Feb 14, 2025', author: 'Arjun Nair', excerpt: 'The double-decker root bridge at Nongriat is one of India\'s most extraordinary sights. Here\'s the complete trekking guide to reach it.' },
-  { slug: '6', title: "India's Best Honeymoon Destinations by Season", category: 'Honeymoon', readTime: '9 min', date: 'Feb 19, 2025', author: 'Priya Menon', excerpt: 'Book the right honeymoon destination for the right season. From Kashmir in summer to Goa in winter — romance awaits all year round.' },
-  { slug: '7', title: 'Solo Travel in India: Safety Tips for Women Travellers', category: 'Travel Tips', readTime: '8 min', date: 'Jan 10, 2025', author: 'Sneha Patel', excerpt: 'India is increasingly welcoming solo women travellers. With the right preparation and knowledge, it can be one of life\'s most rewarding adventures.' },
-  { slug: '8', title: 'Rajasthan Road Trip: The Ultimate 14-Day Route', category: 'Road Trips', readTime: '11 min', date: 'Jan 5, 2025', author: 'Karan Singh', excerpt: "From Jaipur's pink streets to Jaisalmer's golden dunes — map out the perfect Rajasthan road trip with our tested 14-day itinerary." },
-  { slug: '9', title: 'Wildlife Safari in India: Beyond the Tiger', category: 'Wildlife', readTime: '6 min', date: 'Dec 28, 2024', author: 'Arjun Nair', excerpt: 'India is home to far more than just tigers. Discover the best parks for leopards, one-horned rhinos, elephants, and rare Asiatic lions.' },
+  { slug: '1', title: 'Top 10 Hidden Gems in Kerala You Must Visit in 2025', category: 'Destinations', readTime: '6 min', date: 'Jan 15, 2025', author: 'Arjun Nair', excerpt: 'Beyond the famous backwaters and Munnar, Kerala hides extraordinary places that most tourists never discover. We reveal the best-kept secrets.', image: 'https://images.unsplash.com/photo-1599632740188-8a4f152a8342?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { slug: '2', title: 'Complete Guide to the Char Dham Yatra: Planning, Routes & Tips', category: 'Pilgrimage', readTime: '10 min', date: 'Jan 22, 2025', author: 'Priya Menon', excerpt: "Embarking on the Char Dham Yatra is a life-changing spiritual journey. Here's everything you need to know to plan it properly.", image: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=800&auto=format&fit=crop' },
+  { slug: '3', title: 'Best Time to Visit Ladakh: Month-by-Month Breakdown', category: 'Travel Tips', readTime: '7 min', date: 'Feb 1, 2025', author: 'Karan Singh', excerpt: "Ladakh's climate varies dramatically through the year. We break down the best months for different activities — from biking to lake visits.", image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop' },
+  { slug: '4', title: 'How to Travel India on a Budget Without Missing Out', category: 'Budget Travel', readTime: '8 min', date: 'Feb 8, 2025', author: 'Sneha Patel', excerpt: 'India can be incredibly affordable — if you know the right tricks. From train bookings to dharamshalas, our budget travel guide has it all.', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop' },
+  { slug: '5', title: "Meghalaya's Living Root Bridges: How to Get There", category: 'Adventure', readTime: '5 min', date: 'Feb 14, 2025', author: 'Arjun Nair', excerpt: 'The double-decker root bridge at Nongriat is one of India\'s most extraordinary sights. Here\'s the complete trekking guide to reach it.', image: 'https://images.unsplash.com/photo-1698429358246-807d8972da9a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1lZ2hhbGF5YXxlbnwwfHwwfHx8MA%3D%3D' },
+  { slug: '6', title: "India's Best Honeymoon Destinations by Season", category: 'Honeymoon', readTime: '9 min', date: 'Feb 19, 2025', author: 'Priya Menon', excerpt: 'Book the right honeymoon destination for the right season. From Kashmir in summer to Goa in winter — romance awaits all year round.', image: 'https://images.unsplash.com/photo-1699983148544-eedaa1dc589e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fEd1bG1hcmd8ZW58MHx8MHx8fDA%3D' },
+  { slug: '7', title: 'Solo Travel in India: Safety Tips for Women Travellers', category: 'Travel Tips', readTime: '8 min', date: 'Jan 10, 2025', author: 'Sneha Patel', excerpt: 'India is increasingly welcoming solo women travellers. With the right preparation and knowledge, it can be one of life\'s most rewarding adventures.', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop' },
+  { slug: '8', title: 'Rajasthan Road Trip: The Ultimate 14-Day Route', category: 'Road Trips', readTime: '11 min', date: 'Jan 5, 2025', author: 'Karan Singh', excerpt: "From Jaipur's pink streets to Jaisalmer's golden dunes — map out the perfect Rajasthan road trip with our tested 14-day itinerary.", image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop' },
+  { slug: '9', title: 'Wildlife Safari in India: Beyond the Tiger', category: 'Wildlife', readTime: '6 min', date: 'Dec 28, 2024', author: 'Arjun Nair', excerpt: 'India is home to far more than just tigers. Discover the best parks for leopards, one-horned rhinos, elephants, and rare Asiatic lions.', image: 'https://images.unsplash.com/photo-1554930121-665e7be84fb3?q=80&w=800&auto=format&fit=crop' },
 ];
+
 
 const POSTS_PER_PAGE = 6;
 
@@ -71,9 +73,15 @@ export default function BlogPage() {
                 el.style.transform = 'translateY(0)';
               }}
             >
-              <div className="img-placeholder" style={{ minHeight: 320 }}>
-                <Camera size={36} color="var(--text-dim)" />
-                <span style={{ fontSize: '0.8rem' }}>Featured Post Image — Add your photo</span>
+              <div style={{ position: 'relative', minHeight: 320, overflow: 'hidden' }}>
+                <Image
+                  src={blogPosts[0].image}
+                  alt={blogPosts[0].title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               <div style={{ padding: '36px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <span style={{
@@ -143,9 +151,14 @@ export default function BlogPage() {
                     el.style.boxShadow = 'none';
                   }}
                 >
-                  <div className="img-placeholder" style={{ height: 180 }}>
-                    <Camera size={24} color="var(--text-dim)" />
-                    <span style={{ fontSize: '0.7rem' }}>Blog Image — Add photo</span>
+                  <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
+                    />
                   </div>
                   <div style={{ padding: '20px 22px 22px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <span style={{

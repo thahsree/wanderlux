@@ -1,25 +1,27 @@
 'use client';
 
-import { ArrowRight, Camera, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHero from '../components/PageHero';
 
 const destinations = [
-  { name: 'Kerala', region: 'South India', tag: "God's Own Country", packages: 24, desc: 'Backwaters, tea estates, spice gardens, beaches, and Ayurveda retreats.' },
-  { name: 'Rajasthan', region: 'West India', tag: 'Land of Kings', packages: 31, desc: 'Majestic forts, golden deserts, royal palaces, and vibrant bazaars.' },
-  { name: 'Himachal Pradesh', region: 'North India', tag: 'Mountain Paradise', packages: 18, desc: 'Snow-capped peaks, apple orchards, Buddhist monasteries, and adventure sports.' },
-  { name: 'Goa', region: 'West India', tag: 'Beach Capital', packages: 15, desc: 'Golden beaches, Portuguese heritage, water sports, and buzzing nightlife.' },
-  { name: 'Uttarakhand', region: 'North India', tag: 'Dev Bhoomi', packages: 22, desc: 'Char Dham pilgrimage, Rishikesh yoga, Jim Corbett wildlife, and river rafting.' },
-  { name: 'Andaman Islands', region: 'Bay of Bengal', tag: 'Island Paradise', packages: 12, desc: 'Crystal-clear waters, coral reefs, white-sand beaches, and scuba diving.' },
-  { name: 'Leh Ladakh', region: 'North India', tag: 'Land of High Passes', packages: 14, desc: 'Pangong Lake, magnetic hill, ancient monasteries, and high-altitude desert.' },
-  { name: 'Meghalaya', region: 'Northeast India', tag: 'Abode of Clouds', packages: 9, desc: 'Living root bridges, cleanest village, crystal rivers, and cascading waterfalls.' },
-  { name: 'Tamil Nadu', region: 'South India', tag: 'Temple Land', packages: 19, desc: 'Ancient Dravidian temples, Ooty hills, Marina beach, and silk textiles.' },
-  { name: 'Kashmir', region: 'North India', tag: 'Paradise on Earth', packages: 16, desc: 'Dal Lake houseboats, Gulmarg skiing, Pahalgam valleys, and saffron fields.' },
-  { name: 'Assam & NE India', region: 'Northeast India', tag: 'Wild Northeast', packages: 11, desc: 'Kaziranga one-horned rhinos, tea gardens, Brahmaputra river, and tribal culture.' },
-  { name: 'Gujarat', region: 'West India', tag: 'Vibrant Gujarat', packages: 13, desc: 'Rann of Kutch, Gir lions, Dwaraka pilgrimage, and the Statue of Unity.' },
+  { name: 'Kerala', region: 'South India', tag: "God's Own Country", packages: 24, desc: 'Backwaters, tea estates, spice gardens, beaches, and Ayurveda retreats.', image: 'https://plus.unsplash.com/premium_photo-1697729438401-fcb4ff66d9a8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2VyYWxhfGVufDB8fDB8fHww' },
+  { name: 'Rajasthan', region: 'West India', tag: 'Land of Kings', packages: 31, desc: 'Majestic forts, golden deserts, royal palaces, and vibrant bazaars.', image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Himachal Pradesh', region: 'North India', tag: 'Mountain Paradise', packages: 18, desc: 'Snow-capped peaks, apple orchards, Buddhist monasteries, and adventure sports.', image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Goa', region: 'West India', tag: 'Beach Capital', packages: 15, desc: 'Golden beaches, Portuguese heritage, water sports, and buzzing nightlife.', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Uttarakhand', region: 'North India', tag: 'Dev Bhoomi', packages: 22, desc: 'Char Dham pilgrimage, Rishikesh yoga, Jim Corbett wildlife, and river rafting.', image: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Andaman Islands', region: 'Bay of Bengal', tag: 'Island Paradise', packages: 12, desc: 'Crystal-clear waters, coral reefs, white-sand beaches, and scuba diving.', image: 'https://plus.unsplash.com/premium_photo-1719843013722-c2f4d69db940?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8QW5kYW1hbiUyMElzbGFuZHN8ZW58MHx8MHx8fDA%3D' },
+  { name: 'Leh Ladakh', region: 'North India', tag: 'Land of High Passes', packages: 14, desc: 'Pangong Lake, magnetic hill, ancient monasteries, and high-altitude desert.', image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Meghalaya', region: 'Northeast India', tag: 'Abode of Clouds', packages: 9, desc: 'Living root bridges, cleanest village, crystal rivers, and cascading waterfalls.', image: 'https://images.unsplash.com/photo-1625654325562-762dcec9e6f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8TWVnaGFsYXlhfGVufDB8fDB8fHww' },
+  { name: 'Tamil Nadu', region: 'South India', tag: 'Temple Land', packages: 19, desc: 'Ancient Dravidian temples, Ooty hills, Marina beach, and silk textiles.', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VGFtaWwlMjBOYWR1fGVufDB8fDB8fHww' },
+  { name: 'Kashmir', region: 'North India', tag: 'Paradise on Earth', packages: 16, desc: 'Dal Lake houseboats, Gulmarg skiing, Pahalgam valleys, and saffron fields.', image: 'https://images.unsplash.com/photo-1566833912196-17b5f1352932?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Assam & NE India', region: 'Northeast India', tag: 'Wild Northeast', packages: 11, desc: 'Kaziranga one-horned rhinos, tea gardens, Brahmaputra river, and tribal culture.', image: 'https://images.unsplash.com/photo-1554930121-665e7be84fb3?q=80&w=800&auto=format&fit=crop' },
+  { name: 'Gujarat', region: 'West India', tag: 'Vibrant Gujarat', packages: 13, desc: 'Rann of Kutch, Gir lions, Dwaraka pilgrimage, and the Statue of Unity.', image: 'https://images.unsplash.com/photo-1591129841117-3adfd313e34f?q=80&w=800&auto=format&fit=crop' },
 ];
+
 
 const ITEMS_PER_PAGE = 9;
 
@@ -67,11 +69,14 @@ export default function DestinationsPage() {
                     el.style.boxShadow = 'none';
                   }}
                 >
-                  <div className="img-placeholder" style={{ height: 200 }}>
-                    <Camera size={30} color="var(--text-dim)" />
-                    <span style={{ fontSize: '0.75rem', textAlign: 'center', padding: '0 16px' }}>
-                      {dest.name} — Add your photo
-                    </span>
+                  <div style={{ position: 'relative', height: 200, overflow: 'hidden' }}>
+                    <Image
+                      src={dest.image}
+                      alt={dest.name}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                   </div>
                   <div style={{ padding: '20px 22px 22px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>

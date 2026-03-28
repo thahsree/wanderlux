@@ -110,14 +110,20 @@ export default function ContactPage() {
 
             <AnimatedSection direction="right">
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
-                <div style={{ height: 280, background: 'linear-gradient(135deg, #0f1c2e 0%, #0d2233 100%)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                  <MapPin size={40} color="var(--primary-light)" />
-                  <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Replace with Google Maps embed</span>
-                  <span style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>MG Road, Kochi, Kerala</span>
+                <div style={{ height: 280, width: '100%', overflow: 'hidden' }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62456.81520623238!2d75.334033288258!3d11.87622543884878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba42a4929780517%3A0xcb1356f6c919d7d4!2sKannur%2C%20Kerala!5e0!3m2!1sen!2sin!4v1711655651551!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
                 <div style={{ padding: '24px' }}>
                   <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 10, fontFamily: 'inherit' }}>The Travel Designer Head Office</h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.7 }}>42, MG Road, Near Lulu Mall<br />Kochi, Kerala 682001, India</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.7 }}>Main Road, Near Payyambalam Beach<br />Kannur, Kerala 670001, India</p>
                   <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
                     <a href="tel:+919876543210" className="btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '11px', fontSize: '0.82rem' }}><Phone size={14} /> Call Now</a>
                     <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ flex: 1, justifyContent: 'center', padding: '11px', fontSize: '0.82rem' }}>WhatsApp</a>

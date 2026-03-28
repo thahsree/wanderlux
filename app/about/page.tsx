@@ -1,15 +1,17 @@
 'use client';
 
-import { Award, Camera, Heart, Target } from 'lucide-react';
+import { Award, Heart, Target } from 'lucide-react';
+import Image from 'next/image';
 import AnimatedSection from '../components/AnimatedSection';
 import PageHero from '../components/PageHero';
 
 const teamMembers = [
-  { name: 'Arjun Nair', role: 'Founder & CEO', bio: 'Seasoned traveller with 20+ years crafting iconic Indian journeys.' },
-  { name: 'Priya Menon', role: 'Head of Experiences', bio: 'Destination expert specialising in offbeat and cultural itineraries.' },
-  { name: 'Karan Singh', role: 'Adventure Lead', bio: 'Certified mountaineer and trekking guide for Himalayan expeditions.' },
-  { name: 'Sneha Patel', role: 'Customer Relations', bio: 'Ensures every traveller feels heard, cared for, and absolutely delighted.' },
+  { name: 'Arjun Nair', role: 'Founder & CEO', bio: 'Seasoned traveller with 20+ years crafting iconic Indian journeys.', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop' },
+  { name: 'Priya Menon', role: 'Head of Experiences', bio: 'Destination expert specialising in offbeat and cultural itineraries.', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop' },
+  { name: 'Karan Singh', role: 'Adventure Lead', bio: 'Certified mountaineer and trekking guide for Himalayan expeditions.', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop' },
+  { name: 'Sneha Patel', role: 'Customer Relations', bio: 'Ensures every traveller feels heard, cared for, and absolutely delighted.', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop' },
 ];
+
 
 const milestones = [
   { year: '2009', event: 'The Travel Designer founded in Kochi with a team of 3 travel enthusiasts.' },
@@ -47,18 +49,22 @@ export default function AboutPage() {
       <section className="section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 32 }}>
-            {/* Image Placeholder */}
+            {/* Team / Mission Image */}
             <AnimatedSection direction="left">
               <div style={{
                 borderRadius: 'var(--radius-xl)',
                 overflow: 'hidden',
                 height: 420,
                 border: '1px solid var(--border)',
+                position: 'relative',
               }}>
-                <div className="img-placeholder" style={{ height: '100%' }}>
-                  <Camera size={40} color="var(--text-dim)" />
-                  <span>Team / Office Photo — Add your image</span>
-                </div>
+                <Image
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+                  alt="Our Team"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             </AnimatedSection>
 
@@ -81,7 +87,7 @@ export default function AboutPage() {
                   { n: '50+', l: 'Destinations' },
                 ].map(s => (
                   <div key={s.l} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--primary-light)', fontFamily: 'var(--font-playfair)' }}>{s.n}</div>
+                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--primary-light)', fontFamily: 'var(--font-montserrat)' }}>{s.n}</div>
                     <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.l}</div>
                   </div>
                 ))}
@@ -207,9 +213,14 @@ export default function AboutPage() {
                     (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                   }}
                 >
-                  <div className="img-placeholder" style={{ height: 190 }}>
-                    <Camera size={28} color="var(--text-dim)" />
-                    <span style={{ fontSize: '0.72rem' }}>{member.name} Photo</span>
+                  <div style={{ position: 'relative', height: 190, overflow: 'hidden' }}>
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw"
+                    />
                   </div>
                   <div style={{ padding: '18px 16px 20px' }}>
                     <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: 4, fontFamily: 'inherit' }}>{member.name}</h3>

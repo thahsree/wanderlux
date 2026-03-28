@@ -51,7 +51,7 @@ export default function Footer() {
                 <MapPin size={20} color="#fff" />
               </div>
               <div style={{ lineHeight: 1.1 }}>
-                <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)' }}>The Travel Designer</div>
+                <div style={{ fontFamily: 'var(--font-montserrat)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)' }}>The Travel Designer</div>
                 <div style={{ fontSize: '0.6rem', color: 'var(--primary-light)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Travels & Tours</div>
               </div>
             </Link>

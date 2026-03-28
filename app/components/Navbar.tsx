@@ -53,7 +53,7 @@ export default function Navbar() {
             <MapPin size={20} color="#fff" />
           </div>
           <div style={{ lineHeight: 1.1 }}>
-            <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.01em' }}>
+            <div style={{ fontFamily: 'var(--font-montserrat)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.01em' }}>
               The Travel Designer
             </div>
             <div style={{ fontSize: '0.6rem', color: 'var(--primary-light)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
